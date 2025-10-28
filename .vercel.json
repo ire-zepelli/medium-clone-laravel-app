@@ -1,26 +1,12 @@
 {
     "version": 2,
-    "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.7.1"
-        }
-    },
-    "routes": [
+    "builds": [
         {
-            "src": "/build/(.*)",
-            "dest": "/public/build/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
         }
-    ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://yourprojectdomain.com",
-        "CACHE_DRIVER": "array",
-        "SESSION_DRIVER": "array",
-        "VIEW_COMPILED_PATH": "/tmp"
-    }
+    ]
 }
